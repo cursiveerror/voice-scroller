@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">Voice Scroller</string>
+    <string name="accessibility_service_description">Enables voice-controlled swipe gestures for App.</string>
+</resources>
