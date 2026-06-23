@@ -1,52 +1,75 @@
-# Voice Scroller
+<div align="center">
+  <img src="app/src/main/res/mipmap-xxhdpi/icon.png" width="128" alt="Voice Scroller Logo">
+  <h1>Voice Scroller 📱🎙️</h1>
+  
+  <p><b>Керуйте короткими відео (TikTok, Reels, Shorts) за допомогою голосу без дотиків до екрану!</b></p>
 
-Voice Scroller is an Android accessibility application that allows you to control video scrolling (e.g., in short video apps) using your voice.
+  <!-- Badges -->
+  <img src="https://img.shields.io/badge/platform-Android_8.0+-green.svg?style=flat-square" alt="Platform">
+  <img src="https://img.shields.io/badge/language-Kotlin-purple.svg?style=flat-square" alt="Language">
+  <img src="https://img.shields.io/badge/speech_engine-Vosk_Offline-blue.svg?style=flat-square" alt="Engine">
+  <img src="https://img.shields.io/badge/license-MIT-yellow.svg?style=flat-square" alt="License">
+</div>
 
-## Features
-- Completely offline, privacy-friendly voice recognition using [Vosk](https://alphacephei.com/vosk/).
-- Background listening using Android Foreground Services.
-- Simulates touch gestures (Swipe Up, Swipe Down, Tap) using Android Accessibility Services.
-- Custom wake words to avoid conflicts with video audio (e.g., "scroll down", "scroll up", "stop", "next", "back", "pause").
-- Modern Android 14+ compatible, handles restricted settings gracefully.
+---
 
-## How it works
-1. The app requests **Microphone** and **Accessibility Service** permissions.
-2. It extracts a lightweight, offline English voice model from its assets.
-3. It listens in the background for predefined commands.
-4. When a command is recognized, it dispatches an accessibility gesture to the screen.
+## 🌟 Можливості
+- **Повністю офлайн:** Жодне ваше слово не надсилається в інтернет. Усе розпізнавання відбувається локально на пристрої завдяки моделі [Vosk](https://alphacephei.com/vosk/).
+- **Фонова робота:** Працює у фоновому режимі, дозволяючи вам гортати стрічку в інших додатках.
+- **Емуляція свайпів:** Використовує Android Accessibility Service (Спеціальні можливості) для імітації реальних дотиків до екрану.
+- **Оптимізовані команди:** Використовуються специфічні фрази, щоб уникнути конфліктів зі звуком із самих відео.
 
-## Voice Commands
-- **Scroll Down / Next video:** Say `"next"` or `"scroll down"`
-- **Scroll Up / Previous video:** Say `"back"` or `"scroll up"`
-- **Pause/Play video:** Say `"pause"` or `"stop"`
+## 🗣️ Голосові команди (Англійською)
+Додаток слухає вас і чекає на одну з цих команд:
+* ⬇️ **Перегорнути вниз (наступне відео):** Скажіть `"next"` або `"scroll down"`
+* ⬆️ **Перегорнути вгору (попереднє відео):** Скажіть `"back"` або `"scroll up"`
+* ⏸️ **Пауза / Плей:** Скажіть `"pause"` або `"stop"`
 
-## Setup & Installation
-1. Clone the repository:
+---
+
+## 📥 Встановлення (Детальна інструкція)
+
+Для нових версій Android (13+) встановлення вимагає кількох додаткових кроків для безпеки, але це робиться лише один раз!
+
+### Крок 1: Завантаження
+1. Перейдіть у розділ **[Releases](https://github.com/cursiveerror/voice-scroller/releases)**.
+2. Завантажте файл `VoiceScroller.apk` на свій телефон.
+3. Відкрийте файл та натисніть **"Встановити"** (якщо телефон запитає дозвіл на встановлення з невідомих джерел — дозвольте).
+
+### Крок 2: Розблокування "Обмежених налаштувань" (Для Android 13+)
+*Сучасний Android з міркувань безпеки блокує "Спеціальні можливості" для додатків, завантажених не з Google Play.*
+1. Перейдіть у загальні **Налаштування** телефону ➔ **Додатки (Apps)**.
+2. Знайдіть у списку **Voice Scroller**.
+3. У верхньому правому куті екрана натисніть на **три крапки (⋮)**.
+4. Виберіть пункт **Дозволити обмежені налаштування (Allow restricted settings)** і підтвердьте дію сканером відбитка пальця або паролем.
+
+### Крок 3: Надання дозволів
+1. Відкрийте додаток **Voice Scroller**.
+2. Натисніть кнопку **Enable Accessibility Service** (Спеціальні можливості).
+   * Ви потрапите в налаштування пристрою. Знайдіть "Voice Scroller" (зазвичай у розділі "Завантажені додатки").
+   * Увімкніть перемикач.
+3. Поверніться в додаток і натисніть кнопку **Grant Microphone Permission** (Надати доступ до мікрофона). Дозвольте використання мікрофона "Під час використання додатку".
+
+### Крок 4: Запуск
+Коли всі кнопки дозволів зникнуть, у вас з'явиться одна велика кнопка — **Start Listening**.
+Натисніть її, і в шторці сповіщень з'явиться значок програми. Тепер ви можете відкривати TikTok і гортати відео голосом! 🎉
+
+---
+
+## 🛠️ Для розробників (Як зібрати з коду)
+1. Клонуйте репозиторій:
    ```bash
-   git clone https://github.com/your-username/voice-scroller.git
+   git clone https://github.com/cursiveerror/voice-scroller.git
    ```
-2. Open the project in Android Studio.
-3. Build the APK (`Build -> Build Bundle(s) / APK(s) -> Build APK(s)`).
-4. Install the APK on your device.
+2. Відкрийте проєкт у **Android Studio**.
+3. Зачекайте, поки Gradle завантажить усі залежності (включаючи бібліотеку Vosk).
+4. Натисніть `Build -> Build Bundle(s) / APK(s) -> Build APK(s)`.
 
-## Troubleshooting (Android 13+)
-If you install this app directly via an APK, modern Android versions might gray out the Accessibility Service and display a "Restricted Setting" warning.
-To fix this:
-1. Go to **Settings -> Apps -> App Management**.
-2. Find **Voice Scroller**.
-3. Tap the **three dots** in the top-right corner.
-4. Tap **Allow restricted settings**.
-5. Return to Accessibility Settings to enable the service.
+## ⚙️ Використані технології
+- **Kotlin** & **Jetpack Compose** (Сучасний інтерфейс).
+- **Foreground Services** (Для стабільної роботи у фоні).
+- **AccessibilityService API** (Для імітації свайпів).
+- **Vosk Android API** (Офлайн-розпізнавання мови).
 
-## Architecture
-- `MainActivity.kt`: Handles permissions, UI, and starts the service.
-- `VoiceRecognitionService.kt`: A foreground service that manages the microphone and the Vosk model.
-- `SwipeAccessibilityService.kt`: An accessibility service that executes swipe gestures on the screen.
-
-## Dependencies
-- [Vosk Android SDK](https://github.com/alphacep/vosk-api) (Offline Speech Recognition)
-- Jetpack Compose (Modern UI toolkit)
-- Material Design 3
-
-## License
-MIT License
+## 📄 Ліцензія
+Цей проєкт розповсюджується за ліцензією [MIT](LICENSE). Ви можете вільно використовувати та модифікувати код.
